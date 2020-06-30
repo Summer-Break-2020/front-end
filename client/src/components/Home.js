@@ -2,7 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // Actions
-import { getUsers } from '../actions';
+import { getUsers, addUser } from '../actions';
+// Component
+import PostForm from './users/PostForm';
 
 
 const Home = props => {
@@ -10,7 +12,8 @@ const Home = props => {
 
   return (
     <div>
-      This is the Home Page!<br />
+      This is the Home Page!<br /><br />
+      <PostForm addUser={props.addUser} />
       <button onClick={props.getUsers}>Fetch Users (GET)</button>
       {props.users && !props.isFetching && props.users.map(users => (
         <div key={users.id}>
@@ -32,5 +35,5 @@ const mapStateToProps = state => ({
 
 export default connect (
   mapStateToProps,
-  { getUsers }
+  { getUsers, addUser }
 )(Home);

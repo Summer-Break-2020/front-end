@@ -2,7 +2,10 @@
 import {
   FETCH_USERS_START,
   FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE
+  FETCH_USERS_FAILURE,
+  ADD_USER_START,
+  ADD_USER_SUCCESS,
+  ADD_USER_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -33,6 +36,23 @@ export function usersReducer(state=initialState, action) {
         error: action.payload,
         isFetching: false
       };
+    case ADD_USER_START:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case ADD_USER_SUCCESS:
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+        isFetching: false
+      }
+    case ADD_USER_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isFetching: false
+      }
     default:
       return state;
   };
