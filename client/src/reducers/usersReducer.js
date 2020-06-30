@@ -5,7 +5,8 @@ import {
   FETCH_USERS_FAILURE,
   ADD_USER_START,
   ADD_USER_SUCCESS,
-  ADD_USER_FAILURE
+  ADD_USER_FAILURE,
+  DELETE_USER
 } from '../actions';
 
 const initialState = {
@@ -51,6 +52,13 @@ export function usersReducer(state=initialState, action) {
       return {
         ...state,
         error: action.payload,
+        isFetching: false
+      }
+    case DELETE_USER:
+      return {
+        ...state,
+        users: state.users.filter(item => item.id !== action.payload),
+        error: "",
         isFetching: false
       }
     default:

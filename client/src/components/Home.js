@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // Actions
-import { getUsers, addUser } from '../actions';
+import { getUsers, addUser, deleteUser } from '../actions';
 // Component
 import PostForm from './users/PostForm';
 
@@ -10,6 +10,11 @@ import PostForm from './users/PostForm';
 const Home = props => {
   console.log("Props in Home.js", props);
 
+  const handleDelete = id => {
+    props.deleteUser(id);
+  }
+
+  
   return (
     <div>
       This is the Home Page!<br /><br />
@@ -19,7 +24,7 @@ const Home = props => {
         <div key={users.id}>
           <p>{users.first_name}</p>
           <button>Edit (PUT)</button>
-          <button>Delete (DELETE)</button>
+          <button onClick={() => handleDelete(users.id)}>Delete (DELETE)</button>
         </div>
       ))}
     </div>
@@ -35,5 +40,5 @@ const mapStateToProps = state => ({
 
 export default connect (
   mapStateToProps,
-  { getUsers, addUser }
+  { getUsers, addUser, deleteUser }
 )(Home);

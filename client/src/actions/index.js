@@ -9,6 +9,8 @@ export const FETCH_USERS_FAILURE = "FETCH_USERS_FAILURE";
 export const ADD_USER_START = "ADD_USER_START";
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 export const ADD_USER_FAILURE = "ADD_USER_FAILURE";
+// DELETE
+export const DELETE_USER = "DELETE_USER";
 
 
 export const getUsers = () => dispatch => {
@@ -37,3 +39,10 @@ export const addUser = newUser => dispatch => {
       dispatch({ type: ADD_USER_FAILURE, payload: error });
     });
 };
+
+export const deleteUser = id => dispatch => {
+  dispatch({ type: DELETE_USER, payload: id });
+  axios.delete(`https://reqres.in/api/users/${id}`)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+}
