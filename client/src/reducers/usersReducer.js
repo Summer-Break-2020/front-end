@@ -6,6 +6,7 @@ import {
   ADD_USER_START,
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,
+  EDIT_USER,
   DELETE_USER
 } from '../actions';
 
@@ -53,6 +54,12 @@ export function usersReducer(state=initialState, action) {
         ...state,
         error: action.payload,
         isFetching: false
+      }
+    case EDIT_USER:
+      const uneditedUsers = state.users.filter(item => item.id !== action.payload.id);
+      return {
+        ...state,
+        users: [...uneditedUsers, action.payload.editedUser]
       }
     case DELETE_USER:
       return {
