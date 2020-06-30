@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: "https://front-end-psi-smoky.vercel.app/"
+        baseURL: "https://summer-2020-project.herokuapp.com/"
     })
 }
