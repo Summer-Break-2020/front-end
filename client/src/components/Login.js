@@ -7,9 +7,8 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 const Login = () => {
 
   const [user, setUser] = useState({
-    username: '',
     password:'',
-    // email:''
+    email:''
   })
 
   const {push} = useHistory();
@@ -38,13 +37,6 @@ const Login = () => {
       This is the Login Page!
 
       <form onSubmit = {login}>
-        {/* <label id = 'username'>Username</label>
-        <input 
-        type = 'text'
-        name = 'username'
-        label = 'username'
-        value = {user.username}
-        onChange = {handleChange} /> */}
 
         <label id = 'email'>Email</label>
         <input 

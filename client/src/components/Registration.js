@@ -7,9 +7,11 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 const Registration = () => {
 
   const [user, setUser] = useState({
-    username: '',
     password:'',
-    // email:''
+    email:'',
+    f_name:'',
+    l_name:'',
+    location:''
   })
 
   const { push } = useHistory();
@@ -36,13 +38,6 @@ const Registration = () => {
       This is the Registration Page!
 
       <form onSubmit = { register }>
-        {/* <label id = 'username'>Username</label>
-        <input 
-        type = 'text'
-        name = 'username'
-        label = 'username'
-        value = { user.username }
-        onChange = { handleChange } /> */}
 
         <label id = 'email'>Email</label>
         <input 
@@ -50,6 +45,30 @@ const Registration = () => {
         name = 'email'
         label = 'email'
         value = { user.email }
+        onChange = { handleChange } />
+
+        <label id = 'f_name'>First Name</label>
+        <input 
+        type = 'text'
+        name = 'f_name'
+        label = 'f_name'
+        value = { user.f_name }
+        onChange = { handleChange } />
+
+        <label id = 'l_name'>Last Name</label>
+        <input 
+        type = 'text'
+        name = 'l_name'
+        label = 'l_name'
+        value = { user.l_name }
+        onChange = { handleChange } />
+
+        <label id = 'location'>Location</label>
+        <input 
+        type = 'text'
+        name = 'location'
+        label = 'location'
+        value = { user.location }
         onChange = { handleChange } />
 
         <label id = 'password'>Password</label>
